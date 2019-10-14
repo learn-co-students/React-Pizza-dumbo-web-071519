@@ -7,18 +7,19 @@ class App extends Component {
 
   state = {
     pizzas: [],
-    topping: ""
+    displayedPizzas: []
   }
 
-  handleChange=(event)=> {  
-      this.setState({topping: event.target.value}) 
+
+
+
+      handleFormSubmit=(e, newPizza)=>{
+        e.preventDefault()
+        this.setState({
+          pizzas: [...this.state.pizzas, newPizza]
+        }),
+        console.log(newPizza)
       }
-
-      
-
-      handleSubmit=()=> {  
-        this.setState({topping: "hello"}) 
-        }
 
        
   
@@ -27,7 +28,8 @@ class App extends Component {
   fetch('http://localhost:3000/pizzas')
   .then(res => res.json())
   .then( data => this.setState ({
-    pizzas: data
+    pizzas: data,
+    displayedPizzas: data
   }))}
 
   
@@ -38,7 +40,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header/>
-        <PizzaForm isVeg={this.isVeg} topping={this.handleChange} handleSubmit= {this.handleSubmit}/>
+        <PizzaForm isVeg={this.isVeg} handleFormSubmit= {this.handleFormSubmit}/>
         <PizzaList pizzas={this.state.pizzas}/>
       </Fragment>
     );

@@ -25,12 +25,7 @@ class PizzaForm extends React.Component {
   }
 
 
-handleFormSubmit = formSubmitEvent => {
-  formSubmitEvent.preventDefault();
 
-  console.log("You have submitted:", this.state.topping);
-  this.props.handleSubmit()
-};
 
 
   render() {
@@ -61,10 +56,9 @@ handleFormSubmit = formSubmitEvent => {
           </div>
         </div>
         <div className="col">
-          <button type="submit" className="btn btn-success" onClick={this.handleFormSubmit}>Submit</button>
+          <button type="submit" className="btn btn-success" onClick={(e)=>this.props.handleFormSubmit(e, this.state)}>Submit</button>
         </div>
       </div>
-
   )}}
 
   

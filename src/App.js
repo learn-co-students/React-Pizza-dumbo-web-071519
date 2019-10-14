@@ -10,7 +10,12 @@ class App extends Component {
     displayedPizzas: []
   }
 
-
+  sortThings = (event) => {
+    if(event === "Vegetarian"){
+    this.setState({displayedPizzas : this.state.displayedPizzas.sort((thingA, thingB) => thingA.topping > thingB.topping ? 1 : -1)})
+    }else {
+    this.setState({displayedPizzas : this.state.displayedPizzas.sort((thingA, thingB) => thingA.size > thingB.size ? -1 : 1)})
+    }}
 
 
       handleFormSubmit=(e, newPizza)=>{
@@ -40,7 +45,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header/>
-        <PizzaForm isVeg={this.isVeg} handleFormSubmit= {this.handleFormSubmit}/>
+        <PizzaForm isVeg={this.isVeg} handleFormSubmit= {this.handleFormSubmit}  sortThings={this.sortThings}/>
         <PizzaList pizzas={this.state.pizzas}/>
       </Fragment>
     );

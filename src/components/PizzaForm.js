@@ -18,11 +18,7 @@ class PizzaForm extends React.Component {
   }
 
 
-  handleOptionChange = (e) => {
-    this.setState({
-      vegetarian: e.target.value
-    });
-  }
+  
 
 
 
@@ -43,15 +39,15 @@ class PizzaForm extends React.Component {
         </div>
         <div className="col">
           <div className="form-check">
-            <input className="form-check-input" type="radio" value="Vegetarian" checked={this.state.vegetarian === "Vegetarian"}  onChange={this.handleOptionChange}/>
+            <input className="form-check-input" type="radio" name="sort" value="Vegetarian" checked={null}  onChange={(event)=>this.props.sortThings(event.target.value)}/>
             <label className="form-check-label">
-              Vegetarian
+              Sort by Alphabetical Order
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input" type="radio"  value="Not Vegetarian" checked={this.state.vegetarian === "Not Vegetarian"}  onChange={this.handleOptionChange}/>
+            <input className="form-check-input" type="radio"  name="sort" value="Not Vegetarian" checked={null}  onChange={(event)=>this.props.sortThings(event.target.value)}/>
             <label className="form-check-label">
-              Not Vegetarian
+              Sort by Size
             </label>
           </div>
         </div>

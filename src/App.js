@@ -10,16 +10,26 @@ class App extends Component {
     displayedPizzas: []
   }
 
-  sortThings = (event) => {
-    if(event === "Vegetarian"){
-    this.setState({displayedPizzas : this.state.displayedPizzas.sort((thingA, thingB) => thingA.topping > thingB.topping ? 1 : -1)})
-    }else {
-    this.setState({displayedPizzas : this.state.displayedPizzas.sort((thingA, thingB) => thingA.size > thingB.size ? -1 : 1)})
-    }}
+  
 
 
       handleFormSubmit=(e, newPizza)=>{
         e.preventDefault()
+        if (newPizza.topping === "") {
+          alert('You must enter a Pizza Topping!')
+        }
+      else  if (newPizza.size === "" &&  newPizza.topping === "") {
+          alert("At least click something before making a pizza")
+        }
+
+        else if (newPizza.size === "") {
+          alert("You sure you don't want a large?")
+        }
+    
+    
+    
+       
+        else
         this.setState({
           pizzas: [...this.state.pizzas, newPizza]
         }),

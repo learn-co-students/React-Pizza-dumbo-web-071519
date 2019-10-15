@@ -18,7 +18,7 @@ allPizzas=() => { return this.props.pizzas.map( (pizza) => <Pizza
           <tr>
             <th scope="col">Topping</th>
             <th scope="col">Size</th>
-            <th scope="col">God-tier?</th>
+            <th scope="col">Vegetarian?</th>
             <th scope="col">Edit</th>
           </tr>
         </thead>
